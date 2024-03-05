@@ -12,9 +12,9 @@ export default function CustomButton({
   onPress,
 }) {
   return (
-    <MaterialIcons
+    <AntDesign
       style={[CustomButtonStyles.icon, { ...style }]}
-      name={matNameIcon}
+      name={antNameIcon}
       size={iconSize || 35}
       color={iconColor || COLORS.lightWhite}
       onPress={onPress}

@@ -18,6 +18,8 @@ import { COLORS } from "../constant/theme";
 import animations from "../constant/animations";
 import { useNotes } from "../provider/NotesProvider";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { AntDesign } from '@expo/vector-icons';
+import CustomButtonIcon from "../components/CustomButtonIcon";
 import NotFound from "../components/NotFound";
 
 export default function Home({ navigation }) {
@@ -26,6 +28,24 @@ export default function Home({ navigation }) {
   const { noteLists, setnoteLists, getNotes } = useNotes();
   const [searchQuery, setsearchQuery] = useState("");
   const [searchNotFound, setsearchNotFound] = useState(false);
+  const [currentTime, setCurrentTime] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
+  const [schedules, setSchedules] = useState([]);
+
+  useEffect(() => {
+    const updateDateTime = () => {
+      const date = new Date();
+      const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const formattedDate = date.toLocaleDateString();
+      setCurrentTime(formattedTime);
+      setCurrentDate(formattedDate);
+    };
+    
+    updateDateTime();
+    const intervalId = setInterval(updateDateTime, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const dynamicWelcomeMsg = () => {
     const currentHour = new Date().getHours();
@@ -90,22 +110,50 @@ export default function Home({ navigation }) {
             // backgroundColor: "green",
           }}
         >
+           <Text style={homeStyles.currentTime}>{currentTime}</Text>
+          <Text style={homeStyles.currentDate}>{currentDate}</Text>
+          
           <Text
             style={{
-              marginTop: 35,
+              marginTop: -5,
               marginBottom: 10,
-              fontSize: 22,
-              color: COLORS.youDoNote,
+              fontSize: 38,
+              color: COLORS.color4,
               fontFamily: "LeagueSpartan_700Bold",
             }}
           >
-            {`Good ${welcomeMsg}, Noter 📝`}
+            {`Good ${welcomeMsg}! `}
           </Text>
+          
+          <View style={homeStyles.underline} />
+          {/* <Text
+            style={{
+              marginTop: 10,
+              marginBottom: 10,
+              fontSize: 30,
+              color: COLORS.color4,
+              fontFamily: "LeagueSpartan_700Bold",
+            }}
+          >
+            {`Good ${welcomeMsg}! `}
+          </Text> */}
+            <View style={{ paddingTop: 20 }}></View>
           <SearchBar
             value={searchQuery}
             onChangeText={handleOnSearchInput}
             onClear={handleClear}
           />
+          <Text
+            style={{
+              marginTop: 1,
+              marginBottom: 10,
+              fontSize: 38,
+              color: COLORS.color4,
+              fontFamily: "LeagueSpartan_700Bold",
+            }}
+          >
+           Schedule:
+          </Text>
 
           {searchNotFound ? (
             <NotFound />
@@ -130,7 +178,7 @@ export default function Home({ navigation }) {
           ) : null}
 
           <View style={homeStyles.noNoteContainer}>
-            <CustomButton
+            <CustomButtonIcon
               onPress={() => {
                 setmodalVisible(true);
               }}
@@ -157,15 +205,38 @@ const homeStyles = StyleSheet.create({
   },
   emptyNoteAnimation: {
     flex: 1,
+    paddingVertical: 20,
+    marginBottom: 110,
   },
   addNote: {
     alignItems: "center",
-    paddingHorizontal: 45,
-    paddingVertical: 35,
+    paddingHorizontal: 30,
+    paddingVertical: 30,
     position: "absolute",
-    right: 10,
+    left: 207.5,
     bottom: 0,
-    borderTopLeftRadius: 120,
-    borderRadius: 20,
+    // borderTopLeftRadius: 50,
+    borderRadius: 50,
+  },
+  currentTime: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginRight: -20, 
+    paddingRight: 410,
+    fontFamily: "LeagueSpartan_400Regular",
+    color: COLORS.color4,
+  },
+  currentDate: {
+    marginTop: -8,
+    fontSize: 35, 
+    color: COLORS.color4,
+    paddingRight: 380,
+    fontFamily: "LeagueSpartan_700Bold",
+  },
+  underline: {
+    borderBottomWidth: 2,
+    borderColor: COLORS.color4, // Adjust color as needed
+    width: 510, // Adjust width as needed
+    marginTop: 0, // Adjust spacing as needed
   },
 });

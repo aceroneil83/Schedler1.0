@@ -16,10 +16,12 @@ import { COLORS } from "../constant/theme";
 
 const Welcome = ({ navigation }) => {
   const { width, height } = Dimensions.get("window");
+  
   return (
     <SafeAreaView>
       <View>
-        <Image source={images.logo} style={{ width }} />
+        <Image source={images.logo} style={{ width: 530, 
+              height: 400, marginTop: 240, alignItems: "center",}} />
       </View>
       <View
         style={{
@@ -28,48 +30,67 @@ const Welcome = ({ navigation }) => {
           alignItems: "center",
           height,
           paddingHorizontal: 15,
-          paddingVertical: 15,
+          // paddingVertical: 0,
+          marginTop: -205,
         }}
       >
         <View style={{ flexDirection: "row" }}>
           <Text
             style={{
-              marginBottom: 25,
-              fontSize: 25,
-              paddingRight: 5,
+              marginTop: 90,
+              marginBottom: 5,
+              fontSize: 45,
+              paddingRight: 11,
               fontWeight: "bold",
+            
             }}
           >
-            You Do
+            Schedler
           </Text>
-          <Text
-            style={{ fontSize: 25, color: COLORS.yellow, fontWeight: "bold" }}
+          {/* <Text
+            style={{ fontSize: 30, color: COLORS.yellow, fontWeight: "bold" }}
           >
-            Note🖋️
-          </Text>
+            Ler
+          </Text> */}
         </View>
 
-        <Text
+        {/* <Text
           style={{
-            // backgroundColor: "violet",
-            fontSize: 15,
-            marginBottom: 5,
+            // marginTop: 50,
+              marginBottom: -40,
+              fontSize: 35,
+              paddingRight: 10,
+              fontWeight: "bold",
           }}
         >
-          If You Aren't Taking Notes, You Aren't Learning.
-        </Text>
-        <Text style={{ marginBottom: 25, fontWeight: "bold" }}>
+          Sched it!
+        </Text> */}
+        {/* <Text style={{ marginBottom: 25, fontWeight: "bold" }}>
           - Ben Casnocha
-        </Text>
+        </Text> */}
 
         <CustomButton
-          antNameIcon="arrowright"
+          matNameIcon="schedule-send"
           onPress={() => {
             navigation.navigate("Home");
           }}
-          iconColor={COLORS.yellow}
+          iconColor={COLORS.white}
         />
+
+{/* <Text
+          style={{
+            marginTop: -50,
+              // marginBottom: -40,
+              fontSize: 35,
+              paddingRight: 10,
+              fontWeight: "bold",
+          }}
+        >
+          Sched it!
+        </Text> */}
+        
       </View>
+      
     </SafeAreaView>
   );
 };
@@ -80,6 +101,9 @@ const welcomeStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  CustomButton:{
+    paddingRight: 10,
+  }
 });
 
 export default Welcome;

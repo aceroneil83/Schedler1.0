@@ -6,7 +6,7 @@ const SearchBar = ({ value, onChangeText, onClear }) => {
   return (
     <View>
       <TextInput
-        placeholder="Search your note..."
+        placeholder="Enter keyword"
         value={value}
         onChangeText={onChangeText}
         style={styles.searchBar}
@@ -26,16 +26,20 @@ const SearchBar = ({ value, onChangeText, onClear }) => {
 
 const styles = StyleSheet.create({
   searchBar: {
-    borderWidth: 0.5,
-    borderColor: COLORS.youDoNote,
-    borderRadius: 30,
+    width: 500,
+    borderWidth: 1,
+    marginLeft: 5,
+    // paddingRight: 20,
+    borderColor: COLORS.color4,
+    borderRadius: 50,
     paddingVertical: 10,
-    paddingHorizontal: 15,
-    fontSize: 18,
+    paddingHorizontal: 35,
+    fontSize: 20,
   },
   clearIcon: {
     position: "absolute",
-    right: 15,
+    fontSize: 21,
+    right: 18,
     top: 15,
   },
 });

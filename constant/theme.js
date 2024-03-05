@@ -16,6 +16,12 @@ const COLORS = {
   opacityGreen: "#DAF3EA",
   welcomebg: "#3EB489",
   borderColor: "#C9CED0",
+  skyblue: '#2CD5EC',
+  color1: '#F1E05A',
+  color2: '#D6C776',
+  color3: '#F3E1D3',
+  color4: '#204254',
+  color5: '#1892A2'
 };
 
 const SIZES = {

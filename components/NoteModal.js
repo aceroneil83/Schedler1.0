@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomButton from "./CustomButton";
+import CustomButtonIcon from "./CustomButtonIcon";
 import { COLORS } from "../constant/theme";
 const NoteModal = ({
   visible,
@@ -77,7 +77,7 @@ const NoteModal = ({
               alignItems: "center",
             }}
           >
-            <CustomButton
+            <CustomButtonIcon
               antNameIcon="arrowleft"
               iconSize={25}
               iconColor={COLORS.primary}
@@ -96,7 +96,7 @@ const NoteModal = ({
               <TouchableOpacity onPress={handleSubmit}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 25,
                     paddingHorizontal: 5,
                     paddingVertical: 15,
                     //   backgroundColor: "red",
@@ -109,7 +109,7 @@ const NoteModal = ({
               <TouchableOpacity onPress={closeModal}>
                 <Text
                   style={{
-                    fontSize: 16,
+                    fontSize: 25,
                     paddingHorizontal: 5,
                     paddingVertical: 15,
                     //   backgroundColor: "red",
@@ -123,13 +123,20 @@ const NoteModal = ({
           <View
             style={{ borderTopWidth: 1, paddingVertical: 15, marginBottom: 15 }}
           >
-            <Text>{`${new Date().getDate()}/${
-              new Date().getMonth() + 1
-            }/${new Date().getFullYear()}`}</Text>
+            <Text
+            style={{
+                    fontSize: 30,
+                    fontWeight: 'bold',
+                    paddingTop: 10,
+                    paddingVertical: 15,
+                    //   backgroundColor: "red",
+                  }}
+                  >
+                  Add Agenda</Text>
           </View>
           <TextInput
             value={noteTitle}
-            placeholder="Note title"
+            placeholder="Your title"
             style={[styles.modalInput, styles.noteTitle]}
             onChangeText={(text) => {
               handleOnChangeText(text, "title");
@@ -138,7 +145,7 @@ const NoteModal = ({
           <TextInput
             value={note}
             multiline
-            placeholder="Note"
+            placeholder="Description"
             style={[styles.modalInput, styles.note]}
             onChangeText={(text) => {
               handleOnChangeText(text, "note");
@@ -160,21 +167,27 @@ export default NoteModal;
 const styles = StyleSheet.create({
   modalInput: {
     // borderBottomWidth: 1,
-    fontSize: 18,
+    fontSize: 100,
+    
   },
   noteTitle: {
     height: 40,
     // borderTopWidth: 1,
+    marginTop: -25,
     marginBottom: 15,
-    fontSize: 25,
+    fontSize: 27,
     fontWeight: "bold",
   },
   note: {
-    height: 100,
+  height: 860, // Adjust the height based on your needs
+  fontSize: 22,
+  paddingVertical: 10,
+  paddingTop: 15, // Adjust this value to move the placeholder text up or down
+  textAlignVertical: 'top',
   },
   invisibleButton: {
     flex: 1,
     zIndex: -1,
     // backgroundColor: "red",
-  },
+  }
 });

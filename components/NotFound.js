@@ -7,9 +7,9 @@ const NotFound = () => {
   return (
     <View style={[StyleSheet.absoluteFillObject, styles.container]}>
       <LottieView
-        source={animations.noResult}
+        source={animations.noRes}
         loop
-        style={styles.noResult}
+        style={styles.noRes}
         resizeMode="center"
         autoPlay
       />
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     zIndex: -1,
   },
-  noResult: {
+  noRes: {
     flex: 1,
-    width: Dimensions.get("window").width,
+    width: 400,
   },
 });

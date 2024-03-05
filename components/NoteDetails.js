@@ -87,10 +87,10 @@ const NoteDetails = (props) => {
 
         setisVisible(false);
       } else {
-        console.warn("wala nakit an ang note");
+        console.warn("No Result");
       }
     } catch (error) {
-      console.error("Error pag update", error);
+      console.error("Update Error", error);
     }
   };
 
@@ -110,51 +110,61 @@ const NoteDetails = (props) => {
           height,
         }}
       >
+        <Text style={{
+            fontSize: 28,
+            borderTopWidth: 2,
+            paddingTop: 10,
+            fontWeight: 'bold',
+            
+          }}>Schedule Details</Text>
         <Text
           style={{
             textAlign: "right",
-            fontSize: 12,
+            fontSize: 17,
             opacity: 0.5,
             marginBottom: 10,
-            borderTopWidth: 1,
-            paddingTop: 25,
+            marginTop: -29,
           }}
-        >{`Created at ${formatDate(note.time)}`}</Text>
+        >
+          {` ${formatDate(note.time)}`}</Text>
         <ScrollView>
           <View>
             <Text
               style={{
                 fontFamily: "LeagueSpartan_400Regular",
-                fontSize: 18,
+                fontSize: 39,
                 marginBottom: 20,
               }}
             >
               {note.noteTitle}
             </Text>
-            <Text style={{ lineHeight: 21 }}>{note.note}</Text>
+            <Text style={{ fontSize: 22, lineHeight: 21 }}>{note.note}</Text>
           </View>
         </ScrollView>
-        <View style={{ position: "absolute", right: 15, bottom: 50 }}>
+        <View style={{ position: "absolute", right: 20, bottom: 50 }}>
           <CustomButton
-            antNameIcon="delete"
+            matNameIcon="delete"
             style={{
               width: 65,
-              paddingHorizontal: 20,
-              paddingVertical: 20,
+              paddingHorizontal: 15,
+              paddingVertical: 15,
               borderRadius: 50,
               elevation: 0,
-              marginBottom: 10,
+              marginBottom: -2,
             }}
             onPress={displayDeleteAlert}
           />
+          </View>
+          <View style={{ position: "absolute", right: 3, bottom: 50 }}>
           <CustomButton
-            antNameIcon="edit"
+            matNameIcon="edit"
             style={{
               width: 65,
-              paddingHorizontal: 20,
-              paddingVertical: 20,
+              paddingHorizontal: 15,
+              paddingVertical: 15,
               borderRadius: 50,
               elevation: 0,
+              marginRight: 450,
             }}
             onPress={openEditModal}
           />

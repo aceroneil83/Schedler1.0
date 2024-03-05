@@ -1,3 +1,3 @@
-import noResult from "../assets/animations/noResult.json";
-import empty from "../assets/animations/emptyNotes.json";
-export default { noResult, empty };
+import noRes from "../assets/animations/noRes.json";
+import empty from "../assets/animations/empty.json";
+export default { noRes, empty };

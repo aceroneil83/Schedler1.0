@@ -11,29 +11,29 @@ const MakeNote = ({ item, onPress }) => {
           numberOfLines={1}
           style={{
             fontWeight: "bold",
-            color: COLORS.yellow,
-            fontSize: 16,
+            color: COLORS.color4,
+            fontSize: 30,
             paddingBottom: 5,
           }}
         >
           {noteTitle}
         </Text>
-        <Text numberOfLines={3} style={{ color: COLORS.lightWhite }}>
+        <Text numberOfLines={3} style={{ fontSize: 20, color: COLORS.lightWhite }}>
           {note}
         </Text>
         <Text
           style={{
             position: "absolute",
             right: 0,
-            backgroundColor: COLORS.youDoNote,
+            backgroundColor: COLORS.color5,
             paddingVertical: 5,
             paddingHorizontal: 10,
             borderTopRightRadius: 15,
             borderBottomLeftRadius: 15,
-            color: COLORS.youDoNote,
+            color: COLORS.color4,
           }}
         >
-          a
+           
         </Text>
       </View>
     </TouchableOpacity>
@@ -44,7 +44,7 @@ export default MakeNote;
 
 const makeNotesStyles = StyleSheet.create({
   note: {
-    backgroundColor: COLORS.violet,
+    backgroundColor: COLORS.color5,
     paddingHorizontal: 25,
     paddingVertical: 30,
     marginTop: 10,
